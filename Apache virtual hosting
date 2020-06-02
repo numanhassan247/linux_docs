@@ -1,0 +1,44 @@
+- Go To Directory for virtual hosting setting
+cd /etc/apache2/sites-available
+
+- Make copy from default configure file
+sudo cp 000-default.conf your_site.conf
+
+- Edit your new file with appropriate site 
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@example
+    DocumentRoot /var/www/html/example
+    ServerName example.local
+    ServerAlias www.example.local
+    
+    <Directory "/var/www/html/example/public">
+	Options Indexes MultiViews FollowSymLinks
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+	
+    ErrorLog ${APACHE_LOG_DIR}/dev.error.log
+    CustomLog ${APACHE_LOG_DIR}/dev.access.log combined
+
+</VirtualHost> 
+
+- Edit your system Host file
+sudo gedit /etc/hosts 
+
+- Add following to file
+127.0.1.1	example.local
+
+- Enable the new setting for your site with following command
+sudo a2ensite example.conf
+# sudo a2dissite example.conf
+
+
+-------------------
+sudo systemctl start apache2
+sudo systemctl reload apache2
+
+
+
+

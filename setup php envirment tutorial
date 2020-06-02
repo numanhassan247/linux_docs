@@ -1,0 +1,88 @@
+Upgrade ur packages
+--------------------------------
+sudo apt-get update
+sudo apt-get upgrade 
+ 
+--------------------------------
+Install Apache
+--------------------------------
+
+ - sudo apt-get install apache2
+
+Check Apache Service commands 
+ - sudo systemctl status apache2
+ - sudo systemctl start apache2
+ - sudo systemctl stop apache2
+ - sudo systemctl restart apache2
+
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+
+--------------
+Latest version
+--------------
+sudo add-apt repository ppa:ondrej/apache2
+
+
+--------------------------------
+Install MySQL
+--------------------------------
+ - sudo apt-get install mysql-server
+ - mysql_secure_installation
+Password = pass123
+
+--------------------------
+MYSQL Access denied issue 
+--------------------------
+SELECT User, Host, HEX(authentication_string) FROM mysql.user;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass01';
+
+
+--------------------------------
+Install MariaDB 
+--------------------------------
+sudo apt-get install software-properties-common
+sudo apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
+sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.4/ubuntu bionic main'
+
+sudo apt install mariadb-server
+mysql –V
+
+sudo mysql_secure_installation
+
+Password = pass01
+
+FLUSH PRIVILEGES;
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('pass01');
+
+ 
+--------------------------------
+Install PHP 7.3 
+--------------------------------
+Add PHP 7.3 repository
+ - sudo add-apt-repository ppa:ondrej/php
+
+Install PHP, Apache module for PHP and PHP extension for MySQL. And some common modules
+ - sudo apt-get install php7.3
+ - sudo apt-get install libapache2-mod-php7.3 php7.3-common php7.3-mysql php7.3-xml php7.3-xmlrpc php7.3-curl php7.3-gd php7.3-imagick php7.3-cli php7.3-dev php7.3-imap php7.3-mbstring php7.3-opcache php7.3-soap php7.3-zip php7.3-intl
+
+----------
+
+--------------------------
+Permission Denied Issue
+--------------------------
+cd /var/www/html/
+chown nomi:nomi ./ -R
+
+
+--------------------------
+Install Composer
+--------------------------
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+sudo mv composer.phar /usr/local/bin/composer
+
+

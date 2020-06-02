@@ -1,0 +1,46 @@
+chmod 
+------------------
+u - user
+g - group
+o - other people (from the outside world)
+
+------------------
+
+chmod 754
+
+7 , 5 , 4 represent the individual permission for ( in this order ) user , group , other
+
+4 => "read"
+2 => "write"
+1 => "execute"
+1 => "no permission"
+
+7 => "read + write + execute"
+6 => "read + write"
+5 => "read + execute"
+4 => "read"
+
+
+755 for folders
+644 for files
+
+
+
+To change all the directories to 755 (drwxr-xr-x):
+
+find /opt/lampp/htdocs -type d -exec chmod 755 {} \;
+
+To change all the files to 644 (-rw-r--r--):
+
+find /opt/lampp/htdocs -type f -exec chmod 644 {} \;
+
+
+
+
+
+
+
+-----------------------------------
+
+- Add self to group www-data:
+sudo usermod -a -G www-data $USER

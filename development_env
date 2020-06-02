@@ -1,0 +1,35 @@
+
+--------------------------
+Install Git
+--------------------------
+sudo add-apt-repository ppa:git-core/ppa 
+sudo apt update 
+sudo apt install git
+
+--------------------------
+Install Nodejs npm
+--------------------------
+DONT install nodejs from apt 
+
+istall from following 
+https://github.com/nodesource/distributions
+
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+
+
+
+
+
+-------------------
+Install GIMP
+-------------------
+Install from Software manager
+
+-------------------
+Install Vscode 
+-------------------
+Install from Software manager
+
+

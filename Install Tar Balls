@@ -1,0 +1,42 @@
+tar xzf file.tar.gz
+
+
+How you compile a program from a source
+
+    Open a console
+    Use the command cd to navigate to the correct folder. If there is a README file with installation instructions, use that instead.
+
+    Extract the files with one of the commands
+        If it's tar.gz use tar xvzf PACKAGENAME.tar.gz
+        if it's a tar.bz2 use tar xvjf PACKAGENAME.tar.bz2
+
+    ./configure
+    make
+    sudo make install (or with checkinstall)
+
+
+---------------------
+Intall Application 
+---------------------
+
+tar -xzf Your-Application.tar.gz 
+
+sudo mv Your-Application /opt/Your-Application
+
+sudo ln -s /opt/postman/Postman/Postman /usr/local/bin/postman
+
+
+
+sudo gedit /usr/share/applications/Your-Application.desktop
+[Desktop Entry]
+Type=Application
+Name=Postman
+Icon=/opt/Your-Application/assets/icon.png
+Exec="/opt/Your-Application"
+Comment=Postman GUI
+Categories=Development;Code;
+
+
+-------------------------------
+Intall Application another Way 
+-------------------------------

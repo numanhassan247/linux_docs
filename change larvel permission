@@ -1,0 +1,28 @@
+
+
+- Add self to group www-data:
+sudo usermod -a -G www-data $USER
+
+- Change ownership of laravel folder
+sudo chgrp -R www-data /var/www/html/project
+
+- To setup laravel Permission
+sudo chown -R $USER:www-data storage
+sudo chown -R $USER:www-data bootstrap/cache
+sudo chmod -R 775 storage/
+sudo chmod -R 775 bootstrap/cache/
+
+
+
+---------------------
+Permanent solution
+---------------------
+
+Make default ownership of folders in /var/www/html $USER:www-data, so any new creation will assume the permissions of your user and the group www-data
+
+sudo setfacl -d -R -m u:$USER:rwx,g:www-data:rwx,o:rx /var/www/html
+
+
+Now simply add any user to the www-data group to have them have rwx access to any created laravel project in /var/www/html. A reboot will be required.
+
+

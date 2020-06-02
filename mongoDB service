@@ -1,0 +1,6 @@
+sudo chown -R mongodb:mongodb /var/lib/mongodb
+
+sudo chmod 775 /var/lib/mongodb/data/ -R
+
+sudo chown mongodb:mongodb /tmp/mongodb-27017.sock
+sudo chmod 775 /tmp/mongodb-27017.sock
